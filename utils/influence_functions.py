@@ -1,10 +1,6 @@
 import tensorflow as tf
 import numpy as np
 
-### ============================================================
-### 1. Core Utilities
-### ============================================================
-
 def compute_gradients(model, loss_fn, inputs, labels):
     """
     Computes and returns the flattened gradient of the loss with respect to model parameters.
@@ -58,10 +54,6 @@ def conjugate_gradient_solver(model, inputs, labels, loss_fn, b, damping=0.01, m
 
     return x
 
-### ============================================================
-### 2. Influence Core
-### ============================================================
-
 def precompute_test_ihvp(model, test_sample, test_label, loss_fn, damping=0.01):
     """
     Precomputes the inverse-Hessian vector product (IHVP) for the test sample:
@@ -100,10 +92,6 @@ def compute_influence_on_dataset(model, train_images, train_labels, test_sample,
         for i in sample_indices
     ]
     return np.array(influences)
-
-### ============================================================
-### 3. Meta Influence
-### ============================================================
 
 def compute_influence_and_meta_on_sample(model, train_sample, train_label, ihvp, loss_fn, epsilon=1e-3):
     """
